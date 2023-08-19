@@ -1,7 +1,6 @@
 package org.example;
 public class Secretaria extends Funcionario{
     double salario;
-
     Secretaria(int codigo, String nome, String cpf, double salario) {
         super(codigo, nome, cpf);
         this.salario = salario;
@@ -17,7 +16,7 @@ public class Secretaria extends Funcionario{
      * @return String
      */
     public String toString() {
-        return String.format("Codigo Secretaria: %d\nNome: %s\nCPF: %s\nSalario: %f", super.codigo, super.nome, super.cpf, salario);
+        return String.format("Codigo Secretaria: %d \nNome: %s \nCPF: %s \nSalario: %.2f", super.codigo, super.nome, super.cpf, salario);
     }
 }
 

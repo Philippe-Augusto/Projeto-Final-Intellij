@@ -7,7 +7,6 @@ public interface InterfaceConexao {
     Cliente buscaCliente(String nomeCliente);
     int exibeHorariosDia(String data);
     void inserirObjeto (Object object);
-    void excluirObjeto (Object object);
     void desmarcarAtendimento(int cod_atendimento);
     int executaSQL(String sql);
 }

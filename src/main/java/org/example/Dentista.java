@@ -17,7 +17,7 @@ public class Dentista extends Funcionario{
      * @return String
      */
     public String toString() {
-        return String.format("Codigo Dentista: %02d\nNome: %s\nCPF: %s\nCRO: %d", super.codigo, super.nome, super.cpf, CRO);
+        return String.format("Codigo Dentista: %02d\n Nome: %s \nCPF: %s \nCRO: %d", super.codigo, super.nome, super.cpf, CRO);
     }
 
     //Getters and Setters

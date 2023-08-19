@@ -1,6 +1,7 @@
 package org.example;
 
 //import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.swing.*;
 import java.util.Date;
@@ -102,7 +103,7 @@ public class Principal {
                     }
 
                     else {
-
+                        JOptionPane.showMessageDialog(null, "Selecione uma opção válida");
                     }
 
                 }
@@ -144,8 +145,17 @@ public class Principal {
                         throw new UsuarioNaoEncontradoException("Usuario não encontrado para o nome: " + nomeCliente);
                     }
 
-                    String dataHorarioProv = JOptionPane.showInputDialog(null,
-                            "Insira a data e horario do atendimento (dd/MM/yyyy hh:mm:ss)");
+                    String dataProv = JOptionPane.showInputDialog(null,
+                            "Insira a data desejada (dd/MM/yyyy)");
+                    Date data = formataData.parse(dataProv);
+
+                    JOptionPane.showMessageDialog(null,"Escolha um horário disponível");
+                    conexao.exibeHorariosDia(formataData.format(data));
+
+                    String horarioProv = JOptionPane.showInputDialog(null,
+                            "Insira horario do atendimento (hh:mm:ss)");
+
+                    String dataHorarioProv = dataProv + " " + horarioProv;
                     Date dataHorario = formataDataHorario.parse(dataHorarioProv);
 
                     dentista = (Dentista)JOptionPane.showInputDialog(null, "Escolha a dentista", "Dentistas",
@@ -160,8 +170,6 @@ public class Principal {
 
                     atendimento.defineValor();
                     conexao.inserirObjeto(atendimento);
-
-                    JOptionPane.showMessageDialog(null, "Cliente não encontrado");
                 }
 
                 else if (selectValue.equals("Desmarcar um atendimento")) {
@@ -266,7 +274,10 @@ public class Principal {
                 }
 
                 else {
+                    JOptionPane.showMessageDialog(null, "Selecione uma opção válida");
                 }
+            } catch (ParseException exception) {
+                JOptionPane.showMessageDialog(null, "Data Invalida");
             } catch (Exception e) {
                 e.getMessage();
             }

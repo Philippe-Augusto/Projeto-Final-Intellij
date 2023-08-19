@@ -20,7 +20,6 @@ public class Conexao implements InterfaceConexao{
         }
     }
 
-
     /**
      * @return ArrayList<Funcionario>
      */
@@ -139,11 +138,11 @@ public class Conexao implements InterfaceConexao{
 
             else if (object instanceof Secretaria) {
                 Secretaria secretaria = (Secretaria)object;
-                String sql = (String.format("INSERT INTO secretaria VALUES (default, '%s', '%s', %f)",
+                String sql = (String.format("INSERT INTO secretaria VALUES (default, '%s', '%s', %.0f)",
                         secretaria.nome, secretaria.cpf, secretaria.salario));
 
                 if (executaSQL(sql) > 0) {
-                    JOptionPane.showMessageDialog(null, "Secretaria cadastrado com sucesso!");
+                    JOptionPane.showMessageDialog(null, "Secretaria cadastrada com sucesso!");
                 } else {
                     JOptionPane.showMessageDialog(null, "Erro ao cadastrar secretária");
                 }
@@ -162,8 +161,6 @@ public class Conexao implements InterfaceConexao{
                 } else {
                     JOptionPane.showMessageDialog(null, "Erro ao cadastrar atendimento");
                 }
-
-
             }
 
             else if (object instanceof Pagamento) {
@@ -176,51 +173,6 @@ public class Conexao implements InterfaceConexao{
                     JOptionPane.showMessageDialog(null, "Pagamento realizado com sucesso!");
                 } else {
                     JOptionPane.showMessageDialog(null, "Erro ao realizar pagamento");
-                }
-            }
-
-            else {
-                JOptionPane.showMessageDialog(null, "Objeto não cadastrado");
-            }
-        } catch (Exception e) {
-            e.getMessage();
-        }
-    }
-
-    public void excluirObjeto (Object object) {
-        try {
-            if (object instanceof Cliente) {
-                Cliente cliente = (Cliente)object;
-                String sql = String.format("delete from cliente where nome = '%s' and cod = %d", cliente.nome, cliente.codigo);
-
-                if (executaSQL(sql) > 0) {
-                    JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso!");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Erro ao excluir cliente");
-                }
-            }
-
-            else if (object instanceof Dentista) {
-                Dentista dentista = (Dentista)object;
-                String sql = String.format("delete from dentista where name = '%s' and cod = '%d",
-                        dentista.nome, dentista.codigo);
-
-                if (executaSQL(sql) > 0) {
-                    JOptionPane.showMessageDialog(null, "Dentista excluído com sucesso!");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Erro ao excluir dentista");
-                }
-            }
-
-            else if (object instanceof Secretaria) {
-                Secretaria secretaria = (Secretaria)object;
-                String sql = String.format("delete from secretaria where name = '%s' and cod = '%d'",
-                        secretaria.nome, secretaria.codigo);
-
-                if (executaSQL(sql) > 0) {
-                    JOptionPane.showMessageDialog(null, "Secretaria excluída com sucesso!");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Erro ao excluir secretária");
                 }
             }
 
