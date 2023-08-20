@@ -189,6 +189,9 @@ public class Conexao implements InterfaceConexao{
 
         if (executaSQL(sql) > 0) {
             JOptionPane.showMessageDialog(null, "Atendimento excluído com sucesso!");
+
+            sql =  String.format("select atualizar_status('%s')", atendimento.dataHorarioAtendimento);
+            executaSQL(sql);
         } else {
             JOptionPane.showMessageDialog(null, "Erro ao excluir atendimento");
         }
