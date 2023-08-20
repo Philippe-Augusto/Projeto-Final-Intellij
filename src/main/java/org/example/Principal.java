@@ -202,7 +202,7 @@ public class Principal {
                         throw new UsuarioNaoEncontradoException("Usuario não encontrado para o nome: " + nomeCliente);
                     }
 
-                    if (cliente.atendimentosNaoPagos().isEmpty()) {
+                    if (!cliente.atendimentosNaoPagos().isEmpty()) {
                         String atendimento = (String)JOptionPane.showInputDialog(null, "Escolha o atendimento a ser pago", "Atendimentos",
                                 JOptionPane.QUESTION_MESSAGE, null, cliente.atendimentosNaoPagos().toArray(), cliente.atendimentosNaoPagos().get(0));
 
